@@ -12,6 +12,10 @@ namespace Insurance.Api.Controllers
     {
         private readonly IMediator _mediator;
 
+        public InsuranceController()
+        {
+        }
+
         public InsuranceController(IMediator mediator)
         {
             _mediator = mediator;

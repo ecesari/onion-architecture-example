@@ -21,14 +21,14 @@ namespace CoolBlue.Products.Application.Insurance.Queries.CalculateInsurance
         public async Task<InsuranceViewModel> Handle(CalculateInsuranceQuery request, CancellationToken cancellationToken)
         {
             int productId = request.ProductId;
-            var productTypeList = _productDataIntegration.GetProductTypeAsync(productId);
-            var salesPrice = _productDataIntegration.GetSalesPriceAsync(productId);
+            var productType = _productDataIntegration.GetProductTypeByProductAsync(productId, cancellationToken);
+            var salesPrice = _productDataIntegration.GetSalesPriceAsync(productId, cancellationToken);
 
             float insuranceValue = 0f;
 
-            if (productTypeList.Any(x => x.HasInsurance))
+            if (productType.HasInsurance)
             {
-                if (productTypeList.Any(x => x.Name == "Laptops") || productTypeList.Any(x => x.Name == "Smartphones"))
+                if (productType.Name == "Laptops" || productType.Name == "Smartphones")
                     insuranceValue += 500;
                 if (salesPrice > 500 && salesPrice < 2000)
                     insuranceValue += 1000;
@@ -36,14 +36,13 @@ namespace CoolBlue.Products.Application.Insurance.Queries.CalculateInsurance
                     insuranceValue += 2000;
             }
 
-            //TODO: figure out if product type is a list
             var model = new InsuranceViewModel
             {
                 InsuranceValue = insuranceValue,
                 ProductId = productId,
-                ProductTypeHasInsurance = productTypeList.FirstOrDefault().HasInsurance,
+                ProductTypeHasInsurance = productType.HasInsurance,
                 SalesPrice = salesPrice,
-                ProductTypeName = productTypeList.FirstOrDefault().Name,
+                ProductTypeName = productType.Name,
             };
 
             return await Task.FromResult(model);

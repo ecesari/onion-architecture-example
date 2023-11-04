@@ -4,7 +4,7 @@ namespace CoolBlue.Products.Application.Common
 {
     public  interface IProductDataIntegration
     {
-        List<ProductTypeViewModel> GetProductTypeAsync(int productId);
-        int GetSalesPriceAsync(int productId);
+        ProductTypeViewModel GetProductTypeByProductAsync(int productId, CancellationToken cancellationToken);
+        float GetSalesPriceAsync(int productId, CancellationToken cancellationToken);
     }
 }

@@ -1,12 +1,7 @@
 ﻿using CoolBlue.Products.Application.Common;
-using CoolBlue.Products.Application.Insurance.Queries.CalculateInsurance;
+using CoolBlue.Products.Application.Product.Models;
 using CoolBlue.Products.Application.ProductType.Models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoolBlue.Products.Infrastructure.Integration
 {
@@ -14,47 +9,35 @@ namespace CoolBlue.Products.Infrastructure.Integration
     {
         private const string ProductApi = "http://localhost:5002";
 
-        public List<ProductTypeViewModel> GetProductTypeAsync(int productId)
+        public ProductTypeViewModel GetProductTypeByProductAsync(int productId, CancellationToken cancellationToken)
         {
-
             HttpClient client = new HttpClient { BaseAddress = new Uri(ProductApi) };
-            string json = client.GetAsync("/product_types").Result.Content.ReadAsStringAsync().Result;
-            var collection = JsonConvert.DeserializeObject<dynamic>(json);
+            string json = client.GetAsync(string.Format("/products/{0:G}", productId), cancellationToken).Result.Content.ReadAsStringAsync().Result;
+            var product = JsonConvert.DeserializeObject<ProductViewModel>(json);
 
-            json = client.GetAsync(string.Format("/products/{0:G}", productId)).Result.Content.ReadAsStringAsync().Result;
-            var product = JsonConvert.DeserializeObject<dynamic>(json);
+            var productTypeId = product.ProductId;
+            json = client.GetAsync(string.Format("/product_types/{0:G}", productTypeId), cancellationToken).Result.Content.ReadAsStringAsync().Result;
+            var productType = JsonConvert.DeserializeObject<ProductTypeViewModel>(json);
 
-            int productTypeId = product.productTypeId;
-            string productTypeName = null;
-            bool hasInsurance = false;
-
-    
-
-            var returnModel = new List<ProductTypeViewModel>();
-            for (int i = 0; i < collection.Count; i++)
+            var returnModel = new ProductTypeViewModel
             {
-                if (collection[i].id == productTypeId && collection[i].canBeInsured == true)
-                {
-                    returnModel.Add(new ProductTypeViewModel
-                    {
-                        Name = collection[i].name,
-                        HasInsurance = true,
-                    });
-                }
-            }
+                HasInsurance = productType.HasInsurance,
+                Name = productType.Name,
+                Id = productTypeId,
+            };
 
             return returnModel;
         }
 
 
 
-        public int GetSalesPriceAsync(int productId)
+        public float GetSalesPriceAsync(int productId, CancellationToken cancellationToken)
         {
             HttpClient client = new HttpClient { BaseAddress = new Uri(ProductApi) };
-            string json = client.GetAsync(string.Format("/products/{0:G}", productId)).Result.Content.ReadAsStringAsync().Result;
-            var product = JsonConvert.DeserializeObject<dynamic>(json);
+            string json = client.GetAsync(string.Format("/products/{0:G}", productId, cancellationToken)).Result.Content.ReadAsStringAsync().Result;
+            var product = JsonConvert.DeserializeObject<ProductViewModel>(json);
 
-            return product.salesPrice;
+            return product.SalesPrice;
         }
     }
 }
