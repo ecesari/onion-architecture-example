@@ -61,5 +61,29 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
                 actual: insuranceValue
             );
         }
+
+        [Theory]
+        [OrderModelData]
+        public async void GivenBatchSalesPrice_WithCamera_ShouldAddToInsuranceCost(OrderTestModel testModel)
+        {
+            //setup
+            foreach (var line in testModel.OrderLines)
+            {
+                var productTypeViewModel = new ProductTypeViewModel { HasInsurance = true, Id = line.ProductTypeId, Name = "Digital cameras" };
+                _productDataIntegrationMock.Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(productTypeViewModel));
+                _productDataIntegrationMock.Setup(x => x.GetSalesPriceAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(line.SalesPrice));
+            }
+            var productIdList = testModel.OrderLines.Select(x => x.Id).ToList();
+            var expectedInsuranceValue = testModel.InsuranceTotal + 500;
+
+            //act
+            var insuranceValue = await _uut.CalculateBatchInsurance(productIdList, CancellationToken.None);
+
+            //assert
+            Assert.Equal(
+                expected: expectedInsuranceValue,
+                actual: insuranceValue
+            );
+        }
     }
 }

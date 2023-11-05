@@ -19,6 +19,7 @@ namespace CoolBlue.Products.Application.Common.Services
 
         public async Task<float> CalculateBatchInsurance(List<int> productIdList, CancellationToken cancellationToken)
         {
+            int cameraCount = 0;
             float insuranceValue = 0f;
 
             foreach (var productId in productIdList)
@@ -29,14 +30,18 @@ namespace CoolBlue.Products.Application.Common.Services
 
                 if (productType.HasInsurance)
                 {
+                    if (productType.Name == "Digital cameras")
+                        cameraCount++;
                     if (productType.Name == "Laptops" || productType.Name == "Smartphones")
                         insuranceValue += 500;
                     if (salesPrice > 500 && salesPrice < 2000)
                         insuranceValue += 1000;
                     else if (salesPrice >= 2000)
                         insuranceValue += 2000;
-                }
+                }                
             }
+            if (cameraCount >= 1)
+                insuranceValue += 500;           
 
             return insuranceValue;
         }

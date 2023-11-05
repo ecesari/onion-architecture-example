@@ -10,7 +10,7 @@ namespace Coolblue.Products.Tests.Common.Attributes
         public override IEnumerable<object[]> GetData(MethodInfo testMethod)
         {
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string sFile = System.IO.Path.Combine(sCurrentDirectory, @"../../../TestData/ProductList.json");
+            string sFile = Path.Combine(sCurrentDirectory, @"../../../TestData/ProductList.json");
             string sFilePath = Path.GetFullPath(sFile);
 
             var json = File.ReadAllText(sFilePath);
