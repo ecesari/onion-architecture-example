@@ -20,7 +20,7 @@ namespace Coolblue.Products.Tests.Unit.Application.Insurance
         [InlineData(1, "Laptops", 400,500)]
         [InlineData(1, "Laptops", 1200,1500)]
         [InlineData(1, "Foo", 2500,2000)]        
-        public async void CalculateInsuranceQuery_Handle_GivenSalesPrice_ShouldAddToInsuranceCost(int productId, string productTypeName, float salesPrice, double expectedValue)
+        public async void CalculateInsuranceQuery_Handle_GivenSalesPrice_ShouldAddToInsuranceCost(int productId, string productTypeName, double salesPrice, double expectedValue)
         {
             //setup
             _productDataIntegrationMock.Setup(x => x.GetProductTypeByProductAsync(productId, It.IsAny<CancellationToken>())).Returns(new CoolBlue.Products.Application.ProductType.Models.ProductTypeViewModel { HasInsurance = true, Id = productId, Name = productTypeName });

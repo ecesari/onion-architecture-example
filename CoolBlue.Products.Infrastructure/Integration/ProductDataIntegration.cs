@@ -31,7 +31,7 @@ namespace CoolBlue.Products.Infrastructure.Integration
 
 
 
-        public float GetSalesPriceAsync(int productId, CancellationToken cancellationToken)
+        public double GetSalesPriceAsync(int productId, CancellationToken cancellationToken)
         {
             HttpClient client = new HttpClient { BaseAddress = new Uri(ProductApi) };
             string json = client.GetAsync(string.Format("/products/{0:G}", productId, cancellationToken)).Result.Content.ReadAsStringAsync().Result;

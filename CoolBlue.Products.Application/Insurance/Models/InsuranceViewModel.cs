@@ -11,6 +11,6 @@ namespace CoolBlue.Products.Application.Insurance.Models
         [JsonIgnore]
         public bool ProductTypeHasInsurance { get; set; }
         [JsonIgnore]
-        public float SalesPrice { get; set; }
+        public double SalesPrice { get; set; }
     }
 }

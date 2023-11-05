@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoolBlue.Products.Application\CoolBlue.Products.Application.csproj" />
+    <ProjectReference Include="..\CoolBlue.Products.Infrastructure\CoolBlue.Products.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
