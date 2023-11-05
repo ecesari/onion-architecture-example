@@ -21,7 +21,7 @@ namespace CoolBlue.Products.Infrastructure.Integration
         {
             var product = await _httpService.CallAsync<ProductViewModel>(HttpMethod.Get, _productApiSettings.ProductApiUrl, $"products/{productId}");
 
-            var productTypeId = product.ProductId;
+            var productTypeId = product.ProductTypeId;
             var productType = await _httpService.CallAsync<ProductTypeViewModel>(HttpMethod.Get, _productApiSettings.ProductApiUrl, $"product_types/{productTypeId}");
 
             var returnModel = new ProductTypeViewModel

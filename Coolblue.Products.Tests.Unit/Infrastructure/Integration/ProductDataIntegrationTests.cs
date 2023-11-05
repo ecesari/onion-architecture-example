@@ -26,10 +26,14 @@ namespace Coolblue.Products.Tests.Unit.Infrastructure.Integration
 
         [Theory]
         [InlineData(1, 1, true, "Laptops", 700)]
+        [InlineData(2, 1, true, "Mobile", 200)]
+        [InlineData(1, 5, true, "Washing Machines", 1246)]
+        [InlineData(1, 7, true, "Laptops", 230)]
+        [InlineData(15, 46, true, "Printers", 3500)]
         public async void GivenProductId_ShouldReturnProductType(int productId, int productTypeId, bool hasInsurance, string productTypeName, double salesPrice)
         {
             //setup
-            var productViewModel = new ProductViewModel { ProductId = productId, SalesPrice = salesPrice };
+            var productViewModel = new ProductViewModel { ProductTypeId = productTypeId, SalesPrice = salesPrice };
             var productTypeViewModel = new ProductTypeViewModel { Id = 0, HasInsurance = hasInsurance, Name = productTypeName };
             _httpServiceMock.Setup(x => x.CallAsync<ProductViewModel>(HttpMethod.Get, _productApiSettingsMock.Object.Value.ProductApiUrl, $"products/{productId}")).Returns(Task.FromResult(productViewModel));
             _httpServiceMock.Setup(x => x.CallAsync<ProductTypeViewModel>(HttpMethod.Get, _productApiSettingsMock.Object.Value.ProductApiUrl, $"product_types/{productTypeId}")).Returns(Task.FromResult(productTypeViewModel));
@@ -46,10 +50,13 @@ namespace Coolblue.Products.Tests.Unit.Infrastructure.Integration
 
         [Theory]
         [InlineData(1, 700)]
+        [InlineData(15, 200)]
+        [InlineData(46, 3852)]
+        [InlineData(33, 1200)]
         public async void GivenProductId_ShouldReturnSalesPrice(int productId, double salesPrice)
         {
             //setup
-            var productViewModel = new ProductViewModel { ProductId = productId, SalesPrice = salesPrice };
+            var productViewModel = new ProductViewModel { ProductTypeId = productId, SalesPrice = salesPrice };
             _httpServiceMock.Setup(x => x.CallAsync<ProductViewModel>(HttpMethod.Get, _productApiSettingsMock.Object.Value.ProductApiUrl, $"products/{productId}")).Returns(Task.FromResult(productViewModel));
 
             //act
