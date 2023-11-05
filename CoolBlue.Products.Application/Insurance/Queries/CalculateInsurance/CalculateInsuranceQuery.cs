@@ -21,8 +21,8 @@ namespace CoolBlue.Products.Application.Insurance.Queries.CalculateInsurance
         public async Task<InsuranceViewModel> Handle(CalculateInsuranceQuery request, CancellationToken cancellationToken)
         {
             int productId = request.ProductId;
-            var productType = _productDataIntegration.GetProductTypeByProductAsync(productId, cancellationToken);
-            var salesPrice = _productDataIntegration.GetSalesPriceAsync(productId, cancellationToken);
+            var productType = await _productDataIntegration.GetProductTypeByProductAsync(productId, cancellationToken);
+            var salesPrice = await _productDataIntegration.GetSalesPriceAsync(productId, cancellationToken);
 
             float insuranceValue = 0f;
 

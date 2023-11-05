@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coolblue.Products.Tests.Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coolblue.Products.Tests.Integration", "Coolblue.Products.Tests.Integration\Coolblue.Products.Tests.Integration.csproj", "{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{143ABAFB-D4DB-4086-81A7-8E1B79DFE13D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{143ABAFB-D4DB-4086-81A7-8E1B79DFE13D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coolblue.Products.Common", "Coolblue.Products.Common\Coolblue.Products.Common.csproj", "{1660FE0A-242A-4F92-A8D9-476B17D240E4}"
 EndProject
