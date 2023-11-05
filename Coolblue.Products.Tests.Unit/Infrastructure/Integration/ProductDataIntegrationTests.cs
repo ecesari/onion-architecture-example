@@ -1,4 +1,4 @@
-﻿using CoolBlue.Products.Application.Common;
+﻿using CoolBlue.Products.Application.Common.Interfaces;
 using CoolBlue.Products.Application.Product.Models;
 using CoolBlue.Products.Application.ProductType.Models;
 using CoolBlue.Products.Infrastructure.Integration;

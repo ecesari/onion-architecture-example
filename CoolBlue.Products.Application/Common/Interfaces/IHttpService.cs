@@ -1,4 +1,4 @@
-﻿namespace CoolBlue.Products.Application.Common
+﻿namespace CoolBlue.Products.Application.Common.Interfaces
 {
     public interface IHttpService
     {

@@ -1,4 +1,4 @@
-﻿using CoolBlue.Products.Application.Common;
+﻿using CoolBlue.Products.Application.Common.Interfaces;
 using CoolBlue.Products.Application.Product.Models;
 using CoolBlue.Products.Application.ProductType.Models;
 using CoolBlue.Products.Infrastructure.Settings;
@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace CoolBlue.Products.Infrastructure.Integration
 {
-    public class ProductDataIntegration : IProductDataIntegration
+    public class ProductDataIntegration : IProductDataIntegrationServices
     {
         private readonly ProductApiSettings _productApiSettings;
         private readonly IHttpService _httpService;

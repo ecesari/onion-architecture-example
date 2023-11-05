@@ -1,0 +1,40 @@
+{
+  "insuranceTotal": 14000,
+  "orderLines": [
+    {
+      "id": 7,
+      "salesPrice": 1265.88,
+      "productTypeId": 42
+    },
+    {
+      "id": 2,
+      "salesPrice": 2770.59,
+      "productTypeId": 79
+    },
+    {
+      "id": 2,
+      "salesPrice": 2711.71,
+      "productTypeId": 191
+    },
+    {
+      "id": 5,
+      "salesPrice": 4187.63,
+      "productTypeId": 206
+    },
+    {
+      "id": 1,
+      "salesPrice": 2056.96,
+      "productTypeId": 50
+    },
+    {
+      "id": 7,
+      "salesPrice": 3645.57,
+      "productTypeId": 184
+    },
+    {
+      "id": 9,
+      "salesPrice": 7319.6,
+      "productTypeId": 187
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ﻿using CoolBlue.Products.Domain.Specifications;
 using System.Linq.Expressions;
 
-namespace CoolBlue.Products.Application.Specifications
+namespace CoolBlue.Products.Application.Common.Services
 {
     public class BaseSpecification<T> : IBaseSpecification<T>
     {
