@@ -1,4 +1,4 @@
-﻿namespace Coolblue.Products.Common.Settings
+﻿namespace CoolBlue.Products.Infrastructure.Settings
 {
     public class ProductApiSettings
     {

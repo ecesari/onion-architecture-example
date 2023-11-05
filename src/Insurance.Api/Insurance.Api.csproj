@@ -10,6 +10,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\CoolBlue.Products.Application\CoolBlue.Products.Application.csproj" />
-    <ProjectReference Include="..\..\Coolblue.Products.Common\Coolblue.Products.Common.csproj" />
   </ItemGroup>
 </Project>

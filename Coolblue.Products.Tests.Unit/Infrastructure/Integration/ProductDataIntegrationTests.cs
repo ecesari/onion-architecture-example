@@ -1,8 +1,8 @@
-﻿using Coolblue.Products.Common.Settings;
-using CoolBlue.Products.Application.Common;
+﻿using CoolBlue.Products.Application.Common;
 using CoolBlue.Products.Application.Product.Models;
 using CoolBlue.Products.Application.ProductType.Models;
 using CoolBlue.Products.Infrastructure.Integration;
+using CoolBlue.Products.Infrastructure.Settings;
 using Microsoft.Extensions.Options;
 using Moq;
 
