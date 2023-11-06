@@ -1,14 +1,17 @@
 ﻿using CoolBlue.Products.Application.Common.Interfaces;
+using CoolBlue.Products.Domain.Repositories;
 
 namespace CoolBlue.Products.Application.Common.Services
 {
     public class InsuranceService : IInsuranceService
     {
         private readonly IProductDataIntegrationServices _productDataIntegration;
+        private readonly IProductTypeRepository _productTypeRepository;
 
-        public InsuranceService(IProductDataIntegrationServices productDataIntegration)
+        public InsuranceService(IProductDataIntegrationServices productDataIntegration, IProductTypeRepository productTypeRepository)
         {
             _productDataIntegration = productDataIntegration;
+            _productTypeRepository = productTypeRepository;
         }
 
         public async Task<float> CalculateInsurance(int productId, CancellationToken cancellationToken)
@@ -44,6 +47,17 @@ namespace CoolBlue.Products.Application.Common.Services
                 insuranceValue += 500;
 
             return insuranceValue;
+        }
+
+
+        public async Task AddSurcharge(int productTypeId, double surchargeRate, CancellationToken cancellationToken)
+        {
+            var entity = await _productTypeRepository.GetByIdAsync(productTypeId);
+            if (entity == null)
+                throw new Exception("No product type was found!");
+            entity.SurchargeRate = surchargeRate;
+            await _productTypeRepository.UpdateAsync(entity);
+            return;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using CoolBlue.Products.Domain.Repositories;
+﻿using CoolBlue.Products.Application.Common.Interfaces;
 using MediatR;
 
 namespace CoolBlue.Products.Application.ProductType.Commands
@@ -11,14 +11,16 @@ namespace CoolBlue.Products.Application.ProductType.Commands
 
     public class AddSurchargeCommandHandler : IRequestHandler<AddSurchargeCommand>
     {
-        private readonly IProductTypeRepository productTypeRep;
+        private readonly IInsuranceService _insuranceService;
+
+        public AddSurchargeCommandHandler(IInsuranceService insuranceService)
+        {
+            _insuranceService = insuranceService;
+        }
+
         public async Task Handle(AddSurchargeCommand request, CancellationToken cancellationToken)
         {
-            var entity = await productTypeRep.GetByIdAsync(request.ProductTypeId);
-            if (entity == null)
-                throw new Exception("No product type was found!");
-            entity.SurchargeRate = request.SurchargeRate;
-            await productTypeRep.UpdateAsync(entity);
+            await _insuranceService.AddSurcharge(request.ProductTypeId, request.SurchargeRate, cancellationToken);            
             return;
         }
     }
