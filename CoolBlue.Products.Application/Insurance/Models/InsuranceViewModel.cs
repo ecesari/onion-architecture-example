@@ -2,6 +2,6 @@
 {
     public class InsuranceViewModel
     {
-        public float InsuranceValue { get; set; }
+        public double InsuranceValue { get; set; }
     }
 }
