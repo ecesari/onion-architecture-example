@@ -6,10 +6,10 @@ namespace CoolBlue.Products.Application.Common.Services
 {
     public class InsuranceService : IInsuranceService
     {
-        private readonly IProductDataIntegrationServices _productDataIntegration;
+        private readonly IProductDataIntegrationService _productDataIntegration;
         private readonly IProductTypeRepository _productTypeRepository;
 
-        public InsuranceService(IProductDataIntegrationServices productDataIntegration, IProductTypeRepository productTypeRepository)
+        public InsuranceService(IProductDataIntegrationService productDataIntegration, IProductTypeRepository productTypeRepository)
         {
             _productDataIntegration = productDataIntegration;
             _productTypeRepository = productTypeRepository;

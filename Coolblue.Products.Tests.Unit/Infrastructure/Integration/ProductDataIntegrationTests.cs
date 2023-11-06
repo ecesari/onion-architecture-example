@@ -12,7 +12,7 @@ namespace Coolblue.Products.Tests.Unit.Infrastructure.Integration
     {
         private readonly Mock<IOptions<ProductApiSettings>> _productApiSettingsMock;
         private readonly Mock<IHttpService> _httpServiceMock;
-        private readonly ProductDataIntegration _uut;
+        private readonly ProductDataIntegrationService _uut;
 
 
         public ProductDataIntegrationTests()
@@ -21,7 +21,7 @@ namespace Coolblue.Products.Tests.Unit.Infrastructure.Integration
             _productApiSettingsMock.Setup(x => x.Value).Returns(new ProductApiSettings());
 
             _httpServiceMock = new Mock<IHttpService>();
-            _uut = new ProductDataIntegration(_productApiSettingsMock.Object, _httpServiceMock.Object);
+            _uut = new ProductDataIntegrationService(_productApiSettingsMock.Object, _httpServiceMock.Object);
         }
 
         [Theory]

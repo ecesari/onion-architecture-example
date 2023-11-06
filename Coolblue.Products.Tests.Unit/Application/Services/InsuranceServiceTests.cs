@@ -12,12 +12,12 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
     public class InsuranceServiceTests
     {
         private readonly InsuranceService _uut;
-        private readonly Mock<IProductDataIntegrationServices> _productDataIntegrationMock;
+        private readonly Mock<IProductDataIntegrationService> _productDataIntegrationMock;
         private readonly Mock<IProductTypeRepository> _productTypeRepositoryMock;
 
         public InsuranceServiceTests()
         {
-            _productDataIntegrationMock = new Mock<IProductDataIntegrationServices>();
+            _productDataIntegrationMock = new Mock<IProductDataIntegrationService>();
             _productTypeRepositoryMock = new Mock<IProductTypeRepository>();
             _uut = new InsuranceService(_productDataIntegrationMock.Object, _productTypeRepositoryMock.Object);
         }

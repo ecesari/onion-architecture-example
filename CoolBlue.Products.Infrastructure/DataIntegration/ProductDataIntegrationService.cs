@@ -6,12 +6,12 @@ using Microsoft.Extensions.Options;
 
 namespace CoolBlue.Products.Infrastructure.Integration
 {
-    public class ProductDataIntegration : IProductDataIntegrationServices
+    public class ProductDataIntegrationService : IProductDataIntegrationService
     {
         private readonly ProductApiSettings _productApiSettings;
         private readonly IHttpService _httpService;
 
-        public ProductDataIntegration(IOptions<ProductApiSettings> productApiSettings, IHttpService httpService)
+        public ProductDataIntegrationService(IOptions<ProductApiSettings> productApiSettings, IHttpService httpService)
         {
             _productApiSettings = productApiSettings.Value;
             _httpService = httpService;

@@ -2,7 +2,7 @@
 
 namespace CoolBlue.Products.Application.Common.Interfaces
 {
-    public interface IProductDataIntegrationServices
+    public interface IProductDataIntegrationService
     {
         Task<ProductTypeViewModel> GetProductTypeByProductAsync(int productId, CancellationToken cancellationToken);
         Task<double> GetSalesPriceAsync(int productId, CancellationToken cancellationToken);

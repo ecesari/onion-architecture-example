@@ -48,7 +48,14 @@ namespace CoolBlue.Products.Infrastructure.Repository.Base
         public async Task UpdateAsync(T entity)
         {
             _insuranceDb.Entry(entity).State = EntityState.Modified;
-            await _insuranceDb.SaveChangesAsync();
+            try
+            {
+                await _insuranceDb.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw ex;
+            }
         }
 
         private IQueryable<T> ApplySpecification(IBaseSpecification<T> spec)

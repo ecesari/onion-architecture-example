@@ -6,4 +6,5 @@ namespace CoolBlue.Products.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
+    }
 }
