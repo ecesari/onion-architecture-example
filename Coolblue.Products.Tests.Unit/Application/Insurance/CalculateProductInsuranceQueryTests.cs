@@ -20,7 +20,7 @@ namespace Coolblue.Products.Tests.Unit.Application.Insurance
         [InlineData(5, 500)]
         [InlineData(33, 4897)]
         [InlineData(28, 125)]
-        public async void GivenProductId_ShouldReturnInsuranceValue(int productId, float insuranceValue)
+        public async void GivenProductId_ShouldReturnInsuranceValue(int productId, double insuranceValue)
         {
             //setup
             _insuranceServiceMock.Setup(x => x.CalculateInsurance(productId, It.IsAny<CancellationToken>())).Returns(Task.FromResult(insuranceValue));
