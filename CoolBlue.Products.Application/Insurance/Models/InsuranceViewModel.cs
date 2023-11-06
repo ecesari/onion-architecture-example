@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace CoolBlue.Products.Application.Insurance.Models
+﻿namespace CoolBlue.Products.Application.Insurance.Models
 {
     public class InsuranceViewModel
     {

@@ -50,7 +50,7 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
                 _productDataIntegrationMock.Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(productTypeViewModel));
                 _productDataIntegrationMock.Setup(x => x.GetSalesPriceAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(line.SalesPrice));
             }
-            var productIdList = testModel.OrderLines.Select(x=> x.Id).ToList();
+            var productIdList = testModel.OrderLines.Select(x => x.Id).ToList();
 
             //act
             var insuranceValue = await _uut.CalculateBatchInsurance(productIdList, CancellationToken.None);

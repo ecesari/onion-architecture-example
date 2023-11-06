@@ -38,10 +38,10 @@ namespace CoolBlue.Products.Application.Common.Services
                         insuranceValue += 1000;
                     else if (salesPrice >= 2000)
                         insuranceValue += 2000;
-                }                
+                }
             }
             if (cameraCount >= 1)
-                insuranceValue += 500;           
+                insuranceValue += 500;
 
             return insuranceValue;
         }

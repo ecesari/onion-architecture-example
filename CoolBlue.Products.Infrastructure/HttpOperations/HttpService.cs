@@ -1,7 +1,7 @@
-﻿using System.Net.Http.Headers;
-using System.Text;
+﻿using CoolBlue.Products.Application.Common.Interfaces;
 using Newtonsoft.Json;
-using CoolBlue.Products.Application.Common.Interfaces;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace CoolBlue.Products.Infrastructure.HttpOperations
 {
