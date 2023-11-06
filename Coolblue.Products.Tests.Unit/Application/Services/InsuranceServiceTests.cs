@@ -3,6 +3,8 @@ using Coolblue.Products.Tests.Common.Models;
 using CoolBlue.Products.Application.Common.Interfaces;
 using CoolBlue.Products.Application.Common.Services;
 using CoolBlue.Products.Application.ProductType.Models;
+using CoolBlue.Products.Domain.Entities;
+using CoolBlue.Products.Domain.Repositories;
 using Moq;
 
 namespace Coolblue.Products.Tests.Unit.Application.Services
@@ -11,11 +13,13 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
     {
         private readonly InsuranceService _uut;
         private readonly Mock<IProductDataIntegrationServices> _productDataIntegrationMock;
+        private readonly Mock<IProductTypeRepository> _productTypeRepositoryMock;
 
         public InsuranceServiceTests()
         {
             _productDataIntegrationMock = new Mock<IProductDataIntegrationServices>();
-            _uut = new InsuranceService(_productDataIntegrationMock.Object);
+            _productTypeRepositoryMock = new Mock<IProductTypeRepository>();
+            _uut = new InsuranceService(_productDataIntegrationMock.Object, _productTypeRepositoryMock.Object);
         }
         [Theory]
         [InlineData(1, "Foo", 700, 1000)]
@@ -47,8 +51,12 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
             foreach (var line in testModel.OrderLines)
             {
                 var productTypeViewModel = new ProductTypeViewModel { HasInsurance = true, Id = line.ProductTypeId };
-                _productDataIntegrationMock.Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(productTypeViewModel));
-                _productDataIntegrationMock.Setup(x => x.GetSalesPriceAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(line.SalesPrice));
+                _productDataIntegrationMock
+                    .Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(productTypeViewModel));
+                _productDataIntegrationMock
+                    .Setup(x => x.GetSalesPriceAsync(line.Id, It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(line.SalesPrice));
             }
             var productIdList = testModel.OrderLines.Select(x => x.Id).ToList();
 
@@ -70,8 +78,12 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
             foreach (var line in testModel.OrderLines)
             {
                 var productTypeViewModel = new ProductTypeViewModel { HasInsurance = true, Id = line.ProductTypeId, Name = "Digital cameras" };
-                _productDataIntegrationMock.Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(productTypeViewModel));
-                _productDataIntegrationMock.Setup(x => x.GetSalesPriceAsync(line.Id, It.IsAny<CancellationToken>())).Returns(Task.FromResult(line.SalesPrice));
+                _productDataIntegrationMock
+                    .Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(productTypeViewModel));
+                _productDataIntegrationMock
+                    .Setup(x => x.GetSalesPriceAsync(line.Id, It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(line.SalesPrice));
             }
             var productIdList = testModel.OrderLines.Select(x => x.Id).ToList();
             var expectedInsuranceValue = testModel.InsuranceTotal + 500;
@@ -84,6 +96,21 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
                 expected: expectedInsuranceValue,
                 actual: insuranceValue
             );
+        }
+
+        [Theory]
+        [InlineData(1, 10)]
+        public async void GivenSurchargeRate_WithEmptyEntity_ShouldThrowError(int productTypeId, double surchargeRate)
+        {
+            //setup
+            _productTypeRepositoryMock
+                .Setup(x => x.GetByIdAsync(It.IsAny<int>()))
+                .Returns(Task.FromResult<ProductType>(null));
+            
+            //act
+            //assert
+            await Assert.ThrowsAsync<Exception>(() => _uut.AddSurcharge(productTypeId, surchargeRate, CancellationToken.None));
+
         }
     }
 }
