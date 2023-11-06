@@ -18,7 +18,6 @@ namespace CoolBlue.Products.Application.ProductType.Commands
             if (entity == null)
                 throw new Exception("No product type was found!");
             entity.SurchargeRate = request.SurchargeRate;
-
             await productTypeRep.UpdateAsync(entity);
             return;
         }

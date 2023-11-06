@@ -11,7 +11,5 @@ namespace CoolBlue.Products.Infrastructure.Repository
         {
 
         }
-
-
     }
 }

@@ -1,5 +1,4 @@
-using CoolBlue.Products.Application.Insurance.Models;
-using CoolBlue.Products.Application.Insurance.Queries.CalculateProductInsurance;
+using CoolBlue.Products.Application.ProductType.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -18,15 +17,16 @@ namespace Insurance.Api.Controllers
         }
 
         /// <summary>
-        /// Calculate insurance
+        /// Add surcharge to product type
         /// </summary>
-        /// <param name="query">Calculation query including productId</param>
-        /// <returns>Returns an InsuranceViewModel</returns>
+        /// <param name="command">Surcharge command including productTypeId and surchargeRate</param>
+        /// <returns>Returns an actionresult</returns>
         [HttpPost]
         [Route("product")]
-        public async Task<ActionResult<InsuranceViewModel>> AddSurcharge([FromBody] CalculateProductInsuranceQuery query)
+        public async Task<ActionResult> AddSurcharge([FromBody] AddSurchargeCommand command)
         {
-            return await _mediator.Send(query);
+            await _mediator.Send(command);
+            return Ok();
         }
 
     }
