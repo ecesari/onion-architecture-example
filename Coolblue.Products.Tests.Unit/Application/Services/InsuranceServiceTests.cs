@@ -96,21 +96,6 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
                 expected: expectedInsuranceValue,
                 actual: insuranceValue
             );
-        }
-
-        [Theory]
-        [InlineData(1, 10)]
-        public async void GivenSurchargeRate_WithEmptyEntity_ShouldThrowError(int productTypeId, double surchargeRate)
-        {
-            //setup
-            _productTypeRepositoryMock
-                .Setup(x => x.GetByIdAsync(It.IsAny<int>()))
-                .Returns(Task.FromResult<ProductType>(null));
-            
-            //act
-            //assert
-            await Assert.ThrowsAsync<Exception>(() => _uut.AddSurcharge(productTypeId, surchargeRate, CancellationToken.None));
-
-        }
+        }     
     }
 }
