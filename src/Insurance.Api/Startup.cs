@@ -1,5 +1,6 @@
 using CoolBlue.Products.Application.Common.Interfaces;
 using CoolBlue.Products.Application.Common.Services;
+using CoolBlue.Products.Application.ProductType.Commands;
 using CoolBlue.Products.Domain.Repositories;
 using CoolBlue.Products.Infrastructure.Data;
 using CoolBlue.Products.Infrastructure.HttpOperations;
@@ -13,6 +14,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
+using MediatR;
+using Insurance.Api.ServiceCollections;
 
 namespace Insurance.Api
 {
@@ -43,9 +47,23 @@ namespace Insurance.Api
             //Dependencies
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
-            services.AddTransient<IInsuranceService, InsuranceService>();
-            services.AddTransient<IProductDataIntegrationService, ProductDataIntegrationService>();
-            services.AddTransient<IHttpService, HttpService>();
+            services.AddScoped<IInsuranceService, InsuranceService>();
+            services.AddScoped<IProductDataIntegrationService, ProductDataIntegrationService>();
+            services.AddScoped<IHttpService, HttpService>();
+            services.AddHttpClient<HttpService>();
+
+
+            services.AddMediatrHandlersExplicitly();
+            #region MediatR
+            //services.AddMediatR(typeof(Startup));
+            //services.AddMediatR(typeof(AddSurchargeCommand).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(UpdateProductCommand).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(DeleteProductCommand).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(SearchProductsQuery).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetProductsByStockRangeQuery).GetTypeInfo().Assembly);
+            //services.AddMediatR(typeof(GetProductsQuery).GetTypeInfo().Assembly);
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +72,8 @@ namespace Insurance.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

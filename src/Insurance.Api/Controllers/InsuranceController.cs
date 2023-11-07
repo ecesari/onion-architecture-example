@@ -20,13 +20,12 @@ namespace Insurance.Api.Controllers
         /// <summary>
         /// Calculate insurance
         /// </summary>
-        /// <param name="query">Calculation query including productId</param>
+        /// <param name="productId">product Id</param>
         /// <returns>Returns an InsuranceViewModel</returns>
-        [HttpPost]
-        [Route("product")]
-        public async Task<ActionResult<InsuranceViewModel>> AddSurcharge([FromBody] CalculateProductInsuranceQuery query)
+        [HttpGet("product/{productId}")]
+        public async Task<ActionResult<InsuranceViewModel>> CalculateInsurance(int productId)
         {
-            return await _mediator.Send(query);
+            return await _mediator.Send(new CalculateProductInsuranceQuery { ProductId = productId });
         }
 
         /// <summary>

@@ -34,7 +34,7 @@ namespace Coolblue.Products.Tests.Unit.Infrastructure.Integration
         {
             //setup
             var productViewModel = new ProductViewModel { ProductTypeId = productTypeId, SalesPrice = salesPrice };
-            var productTypeViewModel = new ProductTypeViewModel { Id = 0, HasInsurance = hasInsurance, Name = productTypeName };
+            var productTypeViewModel = new ProductTypeViewModel { Id = 0, CanBeInsured = hasInsurance, Name = productTypeName };
             _httpServiceMock.Setup(x => x.CallAsync<ProductViewModel>(HttpMethod.Get, _productApiSettingsMock.Object.Value.ProductApiUrl, $"products/{productId}")).Returns(Task.FromResult(productViewModel));
             _httpServiceMock.Setup(x => x.CallAsync<ProductTypeViewModel>(HttpMethod.Get, _productApiSettingsMock.Object.Value.ProductApiUrl, $"product_types/{productTypeId}")).Returns(Task.FromResult(productTypeViewModel));
 
@@ -43,7 +43,7 @@ namespace Coolblue.Products.Tests.Unit.Infrastructure.Integration
 
             //assert
             Assert.Equal(expected: productTypeId, actual: returnModel.Result.Id);
-            Assert.Equal(expected: hasInsurance, actual: returnModel.Result.HasInsurance);
+            Assert.Equal(expected: hasInsurance, actual: returnModel.Result.CanBeInsured);
             Assert.Equal(expected: productTypeName, actual: returnModel.Result.Name);
         }
 

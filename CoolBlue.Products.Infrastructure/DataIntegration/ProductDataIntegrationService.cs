@@ -26,7 +26,7 @@ namespace CoolBlue.Products.Infrastructure.Integration
 
             var returnModel = new ProductTypeViewModel
             {
-                HasInsurance = productType.HasInsurance,
+                CanBeInsured = productType.CanBeInsured,
                 Name = productType.Name,
                 Id = productTypeId,
             };

@@ -35,7 +35,7 @@ namespace CoolBlue.Products.Application.Common.Services
                 var salesPrice = await _productDataIntegration.GetSalesPriceAsync(productId, cancellationToken);
 
 
-                if (productTypeFromIntegration.HasInsurance)
+                if (productTypeFromIntegration.CanBeInsured)
                 {
                     if (productTypeFromIntegration.Name == ProductTypeConstants.DigitalCamera)
                         cameraCount++;
@@ -59,7 +59,10 @@ namespace CoolBlue.Products.Application.Common.Services
         {
             var entity = await _productTypeRepository.GetByIdAsync(productTypeId);
             if (entity == null)
-                throw new Exception("No product type was found!");
+            {
+                entity = new Domain.Entities.ProductType { Id = productTypeId, SurchargeRate = surchargeRate };
+                await _productTypeRepository.AddAsync(entity);
+            }
             entity.SurchargeRate = surchargeRate;
             await _productTypeRepository.UpdateAsync(entity);
             return;

@@ -29,7 +29,7 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
         public async void GivenSalesPrice_ShouldAddToInsuranceCost(int productId, string productTypeName, double salesPrice, double expectedValue)
         {
             //setup
-            var productViewModel = new ProductTypeViewModel { HasInsurance = true, Id = productId, Name = productTypeName };
+            var productViewModel = new ProductTypeViewModel { CanBeInsured = true, Id = productId, Name = productTypeName };
             _productDataIntegrationMock.Setup(x => x.GetProductTypeByProductAsync(productId, It.IsAny<CancellationToken>())).Returns(Task.FromResult(productViewModel));
             _productDataIntegrationMock.Setup(x => x.GetSalesPriceAsync(productId, It.IsAny<CancellationToken>())).Returns(Task.FromResult(salesPrice));
 
@@ -50,7 +50,7 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
             //setup
             foreach (var line in testModel.OrderLines)
             {
-                var productTypeViewModel = new ProductTypeViewModel { HasInsurance = true, Id = line.ProductTypeId };
+                var productTypeViewModel = new ProductTypeViewModel { CanBeInsured = true, Id = line.ProductTypeId };
                 _productDataIntegrationMock
                     .Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(productTypeViewModel));
@@ -77,7 +77,7 @@ namespace Coolblue.Products.Tests.Unit.Application.Services
             //setup
             foreach (var line in testModel.OrderLines)
             {
-                var productTypeViewModel = new ProductTypeViewModel { HasInsurance = true, Id = line.ProductTypeId, Name = "Digital cameras" };
+                var productTypeViewModel = new ProductTypeViewModel { CanBeInsured = true, Id = line.ProductTypeId, Name = "Digital cameras" };
                 _productDataIntegrationMock
                     .Setup(x => x.GetProductTypeByProductAsync(line.Id, It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(productTypeViewModel));
