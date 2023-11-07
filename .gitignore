@@ -361,5 +361,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/tests/Coolblue.Products.Tests.Unit/CodeCoverage/
-/coveragereport
