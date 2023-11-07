@@ -25,12 +25,3 @@ The project is written in **C#** with **.NET ** and uses **Entity Framework Core
 
 - **MediatR**: MediatR is integrated to handle requests and commands, promoting loose coupling and improving the organization of your application's business logic.
 
-## Installation
-
-Provide instructions on how to set up and run your project locally, including any necessary dependencies.
-
-```bash
-# Example installation instructions
-dotnet restore
-dotnet build
-dotnet run
