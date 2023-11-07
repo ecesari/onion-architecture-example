@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using MediatR;
 using Insurance.Api.ServiceCollections;
+using Insurance.Api.Middlewares;
 
 namespace Insurance.Api
 {
@@ -81,6 +82,8 @@ namespace Insurance.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
