@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CoolBlue.Products.Application\CoolBlue.Products.Application.csproj" />
-    <ProjectReference Include="..\CoolBlue.Products.Infrastructure\CoolBlue.Products.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\CoolBlue.Products.Application\CoolBlue.Products.Application.csproj" />
+    <ProjectReference Include="..\..\src\CoolBlue.Products.Infrastructure\CoolBlue.Products.Infrastructure.csproj" />
     <ProjectReference Include="..\Coolblue.Products.Tests.Common\Coolblue.Products.Tests.Common.csproj" />
   </ItemGroup>
 
