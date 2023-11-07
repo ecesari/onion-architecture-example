@@ -2,7 +2,7 @@
 using CoolBlue.Products.Application.Insurance.Queries.CalculateProductInsurance;
 using Moq;
 
-namespace Coolblue.Products.Tests.Unit.Application.Insurance
+namespace Coolblue.Products.Tests.Application.Insurance
 {
     public class CalculateOrderInsuranceQueryTests
     {

@@ -23,9 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolBlue.Products.Applicati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolBlue.Products.Infrastructure", "CoolBlue.Products.Infrastructure\CoolBlue.Products.Infrastructure.csproj", "{417A225F-47CB-4416-B3F1-788D407E6BFA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coolblue.Products.Tests.Unit", "Coolblue.Products.Tests.Unit\Coolblue.Products.Tests.Unit.csproj", "{5B59A56D-11CB-49DC-A551-E8F6A4F66381}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coolblue.Products.Tests.Integration", "Coolblue.Products.Tests.Integration\Coolblue.Products.Tests.Integration.csproj", "{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coolblue.Products.Tests", "Coolblue.Products.Tests.Unit\Coolblue.Products.Tests.csproj", "{5B59A56D-11CB-49DC-A551-E8F6A4F66381}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coolblue.Products.Tests.Common", "Coolblue.Products.Tests.Common\Coolblue.Products.Tests.Common.csproj", "{72E67D88-03D0-4614-8B45-64EE2AC35EE2}"
 EndProject
@@ -99,18 +97,6 @@ Global
 		{5B59A56D-11CB-49DC-A551-E8F6A4F66381}.Release|x64.Build.0 = Release|Any CPU
 		{5B59A56D-11CB-49DC-A551-E8F6A4F66381}.Release|x86.ActiveCfg = Release|Any CPU
 		{5B59A56D-11CB-49DC-A551-E8F6A4F66381}.Release|x86.Build.0 = Release|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Debug|x64.Build.0 = Debug|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Debug|x86.Build.0 = Debug|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Release|x64.ActiveCfg = Release|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Release|x64.Build.0 = Release|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Release|x86.ActiveCfg = Release|Any CPU
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC}.Release|x86.Build.0 = Release|Any CPU
 		{72E67D88-03D0-4614-8B45-64EE2AC35EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72E67D88-03D0-4614-8B45-64EE2AC35EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72E67D88-03D0-4614-8B45-64EE2AC35EE2}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -137,7 +123,6 @@ Global
 		{2A124E55-A62A-431C-BD67-5668CADF94C6} = {59E0EDDD-6769-484C-83A1-AB85DCE62A1B}
 		{417A225F-47CB-4416-B3F1-788D407E6BFA} = {C7BDCA15-0A65-44BB-AB21-2485A514FBE9}
 		{5B59A56D-11CB-49DC-A551-E8F6A4F66381} = {688513B6-F847-4834-8770-21037905B973}
-		{C53804D6-D3D0-4B41-813B-4DB0F96A43DC} = {688513B6-F847-4834-8770-21037905B973}
 		{72E67D88-03D0-4614-8B45-64EE2AC35EE2} = {688513B6-F847-4834-8770-21037905B973}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

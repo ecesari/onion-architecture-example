@@ -7,7 +7,7 @@ using CoolBlue.Products.Domain.Entities;
 using CoolBlue.Products.Domain.Repositories;
 using Moq;
 
-namespace Coolblue.Products.Tests.Unit.Application.Services
+namespace Coolblue.Products.Tests.Application.Services
 {
     public class InsuranceServiceTests
     {

@@ -6,7 +6,7 @@ using CoolBlue.Products.Infrastructure.Settings;
 using Microsoft.Extensions.Options;
 using Moq;
 
-namespace Coolblue.Products.Tests.Unit.Infrastructure.Integration
+namespace Coolblue.Products.Tests.Infrastructure.Integration
 {
     public class ProductDataIntegrationTests
     {
