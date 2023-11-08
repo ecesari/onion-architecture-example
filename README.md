@@ -7,7 +7,7 @@ This project is a .NET application built using the Onion Architecture pattern. I
 
 This project is a .NET application that follows the principles of **Domain-Driven Design (DDD)**, **Command Query Responsibility Segregation (CQRS)**, and employs the **Onion Architecture pattern**. It is designed to provide a scalable and modular solution for your specific problem domain.
 
-The project is written in **C#** with **.NET ** and uses **Entity Framework Core** to manage the database. It embraces the **SOLID** principles to ensure a clean and maintainable codebase.
+The project is written in **C#** with **.NET** and uses **Entity Framework Core** to manage the database. It embraces the **SOLID** principles to ensure a clean and maintainable codebase.
 
 ## Features
 
